@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars');
 
 const https = require("https");
 const tachanun = require("./tachanun.js");
+const _ = require("underscore")
 
 const app = express();
 const PORT = 3000
@@ -18,9 +19,17 @@ app.set('view engine', 'handlebars');
 
 app.get("/", function (req, res) {
     today = new Date();
+
+    if (req.query.date) {
+        date = _(req.query.date.split("-")).map(Number)
+        today.setYear(date[0])
+        today.setMonth(date[1] - 1)
+        today.setUTCDate(date[2])
+    }
+
     year = today.getFullYear();
     month = today.getMonth() + 1;
-    day = today.getDay();
+    day = today.getUTCDate();
 
     https.get(`https://www.hebcal.com/converter/?cfg=json&gy=${year}&gm=${month}&gd=${day}&g2h=1`, (resp) => {
         data = ""
@@ -33,7 +42,12 @@ app.get("/", function (req, res) {
             // console.log()
             noTachanun = tachanun.noTachanun(data.hm.toLowerCase(), data.hd)
             res.render("home", {
-                "tachanun": noTachanun ? "No Tachanun!" : "There is Tachanun today."
+                noTachanun: noTachanun,
+                date: today.toDateString(),
+                hebrewDate: `${data.hd} ${data.hm} ${data.hy}`,
+                hebrewDateHebrew: data.hebrew,
+                reason: noTachanun ? noTachanun.description : undefined,
+                datePlaceholder: today.toISOString().substring(0, 10)
             })
         })
     })

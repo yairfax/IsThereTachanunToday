@@ -39,7 +39,7 @@ const days = {
             month: tishrei,
             startDay: 11,
             endDay: 14,
-            description: "Between Yom Kippur and Sukkot"
+            description: "between Yom Kippur and Sukkot"
         },
         {
             month: tishrei,
@@ -69,7 +69,7 @@ const days = {
             month: tishrei,
             startDay: 24,
             endDay: 29,
-            description: "Between Sukkot and Rosh Chodesh Cheshvan"
+            description: "between Sukkot and Rosh Chodesh Cheshvan"
         },
         {
             month: tishrei,
