@@ -305,7 +305,7 @@ const days = {
             month: sivan,
             startDay: 8,
             endDay: 12,
-            description: "Week after Shavuot"
+            description: "the week after Shavuot"
         },
         {
             month: sivan,
