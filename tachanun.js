@@ -1,3 +1,5 @@
+const _ = require('underscore')
+
 const tishrei = "tishrei"
 const cheshvan = "cheshvan"
 const kislev = "kislev"
@@ -368,16 +370,7 @@ const days = {
     ]
 }
 
-function noTachanun(month, day) {
-    currMonth = days[month]
-
-    for (holiday of currMonth) {
-        if (day >= holiday.startDay && day <= holiday.endDay) {
-            return holiday
-        }
-    }
-    return false
-}
+noTachanun = (month, day) => _(days[month]).find(holiday => day >= holiday.startDay && day <= holiday.endDay)
 
 module.exports = {
     noTachanun: noTachanun
