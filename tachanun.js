@@ -142,6 +142,12 @@ const days = {
             description: "Rosh Chodesh Adar"
         },
         {
+        	month: adar,
+        	startDay: 7,
+        	endDay: 7,
+        	description: "Moshe's Yahrtzeit"
+        },
+        {
             month: adar,
             startDay: 14,
             endDay: 14,
