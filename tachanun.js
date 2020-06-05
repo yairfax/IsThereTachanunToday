@@ -370,7 +370,7 @@ const days = {
     ]
 }
 
-noTachanun = (month, day) => _(days[month.replace("'","")]).find(holiday => day >= holiday.startDay && day <= holiday.endDay)
+noTachanun = (month, day) => _(days[month.replace("'", "").replace(" ii", "2").replace(" i", "1")]).find(holiday => day >= holiday.startDay && day <= holiday.endDay)
 
 module.exports = {
     noTachanun: noTachanun
