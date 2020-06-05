@@ -2,13 +2,12 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const exphbs = require('express-handlebars');
-
 const https = require("https");
 const tachanun = require("./tachanun.js");
 const _ = require("underscore")
 
 const app = express();
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 var hbs = exphbs.create({ defaultLayout: 'main', partialsDir: "vies/partials/" });
 app.use(logger('dev'))
