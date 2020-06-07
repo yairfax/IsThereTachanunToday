@@ -23,4 +23,4 @@ def main():
         hebrew_date="%d %s %d" % (response["hd"], response["hm"], response["hy"]),
         hebrew_date_hebrew=response["hebrew"],
         date_placeholder=today.isoformat(),
-        reason=tachanun_huh["description"] if tachanun_huh else "")
+        reason=tachanun_huh["description"] if tachanun_huh else "") 
