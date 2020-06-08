@@ -12,28 +12,60 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script> #}
 
     <title>Is There Tachanun Today?</title>
+
+
+    <style>
+        body {
+            background-color: #ffffff
+        }
+
+        .navbar {
+            padding-bottom: 10px;
+            background-color: #5c1b6b;
+        }
+
+        .nav-link {
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>{%if no_tachanun %}No Tachanun today!{% else %}There is Tachanun today.{% endif %}</h1>
-        <p>Today's Gregorian Date: {{date}}</p>
-        <p>Today's Hebrew Date: {{hebrew_date}} / {{hebrew_date_hebrew}}</p>
-        {%if no_tachanun %}
-        <p>No tachnun today because {{hebrew_date}} is {{reason}}.</p>
-        {% endif %}
+    <div class="navbar">
+        <div class="container-fluid">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><b>IsThereTachanunToday.com</b></a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-        <p>Pick another date:</p>
-        <form method="get" action="/">
-            <div class="form-row align-items-center">
-                <div class="col-auto">
-                    <input type="date" class="form-control" required name="date" value="{{date_placeholder}}">
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">Go!</button>
+    <div class="container">
+        <h1 style="padding-top: 40px; text-align: center">{%if no_tachanun %}No Tachanun today!{% else %}There is Tachanun today.{% endif %}</h1>
+        <div style="padding-top: 10px; width: 50%; margin: auto">
+            <div class="card" style="width: 35rem;">
+                <div class="card-body">
+                    <p>Today's Gregorian Date: {{date}}</p>
+                    <p>Today's Hebrew Date: {{hebrew_date}} / {{hebrew_date_hebrew}}</p>
+                    {%if no_tachanun %}
+                    <p>No tachnun today because {{hebrew_date}} is {{reason}}.</p>
+                    {% endif %}
+
+                    <p>Pick another date:</p>
+                    <form method="get" action="/">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto">
+                                <input type="date" class="form-control" required name="date" value="{{date_placeholder}}">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">Go!</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </body>
 
