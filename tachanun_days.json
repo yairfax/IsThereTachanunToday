@@ -143,53 +143,53 @@
             "description": "Shushan Purim"
         }
     ],
-    "adar1": [
+    "adar_i": [
         {
-            "month": "adar1",
+            "month": "adar_i",
             "startDay": 1,
             "endDay": 1,
             "description": "Rosh Chodesh Adar"
         },
         {
-            "month": "adar1",
+            "month": "adar_i",
             "startDay": 14,
             "endDay": 14,
             "description": "Purim Katan"
         },
         {
-            "month": "adar1",
+            "month": "adar_i",
             "startDay": 15,
             "endDay": 15,
             "description": "Shushan Purim Katan"
         },
         {
-            "month": "adar1",
+            "month": "adar_i",
             "startDay": 30,
             "endDay": 30,
             "description": "Rosh Chodesh Adar"
         }
     ],
-    "adar2": [
+    "adar_ii": [
         {
-            "month": "adar2",
+            "month": "adar_ii",
             "startDay": 1,
             "endDay": 1,
             "description": "Rosh Chodesh Adar"
         },
         {
-            "month": "adar2",
+            "month": "adar_ii",
             "startDay": 14,
             "endDay": 14,
             "description": "Purim"
         },
         {
-            "month": "adar2",
+            "month": "adar_ii",
             "startDay": 15,
             "endDay": 15,
             "description": "Shushan Purim"
         },
         {
-            "month": "adar2",
+            "month": "adar_ii",
             "startDay": 30,
             "endDay": 30,
             "description": "Rosh Chodesh Nisan"
