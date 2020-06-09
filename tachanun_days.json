@@ -4,84 +4,89 @@
             "month": "tishrei",
             "startDay": 1,
             "endDay": 2,
-            "description": "Rosh Hashana",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
-            "dayBefore": false
+            "description": "Rosh Hashana"
         },
         {
             "month": "tishrei",
             "startDay": 9,
             "endDay": 9,
-            "description": "Erev Yom Kippur",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": false
+            "description": "Erev Yom Kippur"
         },
         {
             "month": "tishrei",
             "startDay": 10,
             "endDay": 10,
-            "description": "Yom Kippur",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
-            "dayBefore": false
+            "description": "Yom Kippur"
         },
         {
             "month": "tishrei",
             "startDay": 11,
             "endDay": 14,
-            "description": "between Yom Kippur and Sukkot",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": false
+            "description": "between Yom Kippur and Sukkot"
         },
         {
             "month": "tishrei",
             "startDay": 15,
             "endDay": 16,
-            "description": "Sukkot",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
-            "dayBefore": false
+            "description": "Sukkot"
         },
         {
             "month": "tishrei",
             "startDay": 17,
             "endDay": 21,
-            "description": "Sukkot (Chol Hamoed)",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
-            "dayBefore": false
+            "description": "Sukkot (Chol Hamoed)"
         },
         {
             "month": "tishrei",
             "startDay": 22,
             "endDay": 22,
-            "description": "Shmini Atzeret",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
-            "dayBefore": false
+            "description": "Shmini Atzeret"
         },
         {
             "month": "tishrei",
             "startDay": 23,
             "endDay": 23,
-            "description": "Simchat Torah",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
-            "dayBefore": false
+            "description": "Simchat Torah"
         },
         {
             "month": "tishrei",
             "startDay": 24,
             "endDay": 29,
-            "description": "between Sukkot and Rosh Chodesh Cheshvan",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": false
+            "description": "between Sukkot and Rosh Chodesh Cheshvan"
+        },
+        {
+            "month": "tishrei",
+            "startDay": 30,
+            "endDay": 30,
+            "description": "Rosh Chodesh Cheshvan"
         }
     ],
-    "cheshvan": [],
+    "cheshvan": [
+        {
+            "month": "cheshvan",
+            "startDay": 1,
+            "endDay": 1,
+            "description": "Rosh Chodesh Cheshvan"
+        },
+        {
+            "month": "cheshvan",
+            "startDay": 30,
+            "endDay": 30,
+            "description": "Rosh Chodesh Kislev"
+        }
+    ],
     "kislev": [
+        {
+            "month": "kislev",
+            "startDay": 1,
+            "endDay": 1,
+            "description": "Rosh Chodesh Kislev"
+        },
         {
             "month": "kislev",
             "startDay": 25,
             "endDay": 30,
-            "description": "Channuka",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": true
+            "description": "Channuka"
         }
     ],
     "tevet": [
@@ -89,196 +94,267 @@
             "month": "tevet",
             "startDay": 1,
             "endDay": 3,
-            "description": "Channuka",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": false
+            "description": "Channuka"
         }
     ],
     "shvat": [
         {
             "month": "shvat",
+            "startDay": 1,
+            "endDay": 1,
+            "description": "Rosh Chodesh Shvat"
+        },
+        {
+            "month": "shvat",
             "startDay": 15,
             "endDay": 15,
-            "description": "Tu Bishvat",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": true
+            "description": "Tu Bishvat"
+        },
+        {
+            "month": "shvat",
+            "startDay": 30,
+            "endDay": 30,
+            "description": "Rosh Chodesh Adar"
         }
     ],
     "adar": [
         {
             "month": "adar",
+            "startDay": 1,
+            "endDay": 1,
+            "description": "Rosh Chodesh Adar"
+        },
+        {
+            "month": "adar",
+            "startDay": 7,
+            "endDay": 7,
+            "description": "Moshe's Yahrtzeit"
+        },
+        {
+            "month": "adar",
             "startDay": 14,
             "endDay": 14,
-            "description": "Purim",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": true
+            "description": "Purim"
         },
         {
             "month": "adar",
             "startDay": 15,
             "endDay": 15,
-            "description": "Shushan Purim",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": false
+            "description": "Shushan Purim"
         }
     ],
     "adar_i": [
         {
             "month": "adar_i",
+            "startDay": 1,
+            "endDay": 1,
+            "description": "Rosh Chodesh Adar"
+        },
+        {
+            "month": "adar_i",
             "startDay": 14,
             "endDay": 14,
-            "description": "Purim Katan",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": true
+            "description": "Purim Katan"
         },
         {
             "month": "adar_i",
             "startDay": 15,
             "endDay": 15,
-            "description": "Shushan Purim Katan",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": false
+            "description": "Shushan Purim Katan"
+        },
+        {
+            "month": "adar_i",
+            "startDay": 30,
+            "endDay": 30,
+            "description": "Rosh Chodesh Adar"
         }
     ],
     "adar_ii": [
         {
             "month": "adar_ii",
+            "startDay": 1,
+            "endDay": 1,
+            "description": "Rosh Chodesh Adar"
+        },
+        {
+            "month": "adar_ii",
             "startDay": 14,
             "endDay": 14,
-            "description": "Purim",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": true
+            "description": "Purim"
         },
         {
             "month": "adar_ii",
             "startDay": 15,
             "endDay": 15,
-            "description": "Shushan Purim",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": false
+            "description": "Shushan Purim"
+        },
+        {
+            "month": "adar_ii",
+            "startDay": 30,
+            "endDay": 30,
+            "description": "Rosh Chodesh Nisan"
         }
     ],
     "nisan": [
         {
             "month": "nisan",
+            "startDay": 1,
+            "endDay": 1,
+            "description": "Rosh Chodesh Nisan"
+        },
+        {
+            "month": "nisan",
             "startDay": 2,
             "endDay": 14,
-            "description": "Chodesh Nisan",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": false
+            "description": "Chodesh Nisan"
         },
         {
             "month": "nisan",
             "startDay": 15,
             "endDay": 22,
-            "description": "Pesach",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
-            "dayBefore": true
+            "description": "Pesach"
         },
         {
             "month": "nisan",
             "startDay": 23,
             "endDay": 29,
-            "description": "Chodesh Nisan",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": false
+            "description": "Chodesh Nisan"
+        },
+        {
+            "month": "nisan",
+            "startDay": 30,
+            "endDay": 30,
+            "description": "Rosh Chodesh Iyyar"
         }
     ],
     "iyyar": [
         {
             "month": "iyyar",
-            "startDay": 5,
-            "endDay": 5,
-            "description": "Yom Ha'atzmaut",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.4",
-            "dayBefore": true
+            "startDay": 1,
+            "endDay": 1,
+            "description": "Rosh Chodesh Iyyar"
         },
         {
             "month": "iyyar",
-            "startDay": 14,
-            "endDay": 14,
-            "description": "Pesach Sheni",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": true
+            "startDay": 5,
+            "endDay": 5,
+            "description": "Yom Ha'atzmaut"
+        },
+        {
+            "month": "iyyar",
+            "startDay": 15,
+            "endDay": 15,
+            "description": "Pesach Sheni"
         },
         {
             "month": "iyyar",
             "startDay": 18,
             "endDay": 18,
-            "description": "Lag Ba'omer",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": true
+            "description": "Lag Ba'omer"
         },
         {
             "month": "iyyar",
             "startDay": 28,
             "endDay": 28,
-            "description": "Yom Yerushalaim",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.4",
-            "dayBefore": true
+            "description": "Yom Yerushalaim"
+        },
+        {
+            "month": "iyyar",
+            "startDay": 30,
+            "endDay": 30,
+            "description": "Rosh Chodesh Sivan"
         }
     ],
     "sivan": [
         {
             "month": "sivan",
+            "startDay": 1,
+            "endDay": 1,
+            "description": "Rosh Chodesh Sivan"
+        },
+        {
+            "month": "sivan",
             "startDay": 2,
             "endDay": 2,
-            "description": "Yom Hameyuchas",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": false
+            "description": "Yom Hameyuchas"
         },
         {
             "month": "sivan",
             "startDay": 3,
             "endDay": 5,
-            "description": "Shloshet Yemei Hagbala",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": false
+            "description": "Shloshet Yemei Hagbala"
         },
         {
             "month": "sivan",
             "startDay": 6,
             "endDay": 7,
-            "description": "Shavuot",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
-            "dayBefore": false
+            "description": "Shavuot"
         },
         {
             "month": "sivan",
             "startDay": 8,
             "endDay": 12,
-            "description": "the week after Shavuot",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
-            "dayBefore": false
+            "description": "the week after Shavuot"
+        },
+        {
+            "month": "sivan",
+            "startDay": 30,
+            "endDay": 30,
+            "description": "Rosh Chodesh Tamuz"
         }
     ],
-    "tamuz": [],
+    "tamuz": [
+        {
+            "month": "tamuz",
+            "startDay": 1,
+            "endDay": 1,
+            "description": "Rosh Chodesh Tamuz"
+        },
+        {
+            "month": "tamuz",
+            "startDay": 30,
+            "endDay": 30,
+            "description": "Rosh Chodesh Av"
+        }
+    ],
     "av": [
+        {
+            "month": "av",
+            "startDay": 1,
+            "endDay": 1,
+            "description": "Rosh Chodesh Av"
+        },
         {
             "month": "av",
             "startDay": 9,
             "endDay": 9,
-            "description": "Tisha B'av",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": true
+            "description": "Tisha B'av"
         },
         {
             "month": "av",
             "startDay": 15,
             "endDay": 15,
-            "description": "Tu B'av",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": true
+            "description": "Tu B'av"
+        },
+        {
+            "month": "av",
+            "startDay": 30,
+            "endDay": 30,
+            "description": "Rosh Chodesh Elul"
         }
     ],
     "elul": [
         {
             "month": "elul",
+            "startDay": 1,
+            "endDay": 1,
+            "description": "Rosh Chodesh Elul"
+        },
+        {
+            "month": "elul",
             "startDay": 29,
             "endDay": 29,
-            "description": "Erev Rosh Hashana",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
-            "dayBefore": false
+            "description": "Erev Rosh Hashana"
         }
     ]
 }
