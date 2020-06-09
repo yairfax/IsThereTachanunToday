@@ -41,7 +41,7 @@ def fix_spelling(date_str):
     return date_str.replace("Teves", "Tevet").replace("Iyar", "Iyyar").replace("Nissan", "Nisan").replace("Rishon", "Aleph").replace("Sheni", "Bet")
 
 def get_key(date):    
-    return month_str(date).lower().replace("aleph", "_i").replace("bet", "_ii")
+    return month_str(date).lower().replace(" aleph", "_i").replace(" bet", "_ii")
 
 def month_str(date):
     return fix_spelling(hebrewcal.Month(date.year, date.month).name)

@@ -15,7 +15,7 @@ def main():
         today_hebrew = today_hebrew.from_pydate(today_greg)
 
     tachanun_huh = no_tachanun(today_hebrew)
-    return render_template('main.jinja',
+    return render_template('main.html',
         no_tachanun=tachanun_huh,
         date=today_greg.strftime("%B %d, %Y"),
         hebrew_date="%d %s %d" % (today_hebrew.day, month_str(today_hebrew), today_hebrew.year),
