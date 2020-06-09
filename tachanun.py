@@ -40,4 +40,4 @@ def month_str(date):
     return fix_spelling(hebrewcal.Month(date.year, date.month).name)
 
 def get_hebrew_date_str(date):
-    return "%s %s, %s" % (gematria.NumberToGematria(date.day), month_map[get_key(date)], gematria.YearNoToGematria(date.year, sofit=False))
+    return "%s %s, %s" % (gematria.NumberToGematria(date.day, sofit=False), month_map[get_key(date)], gematria.YearNoToGematria(date.year, sofit=False))
