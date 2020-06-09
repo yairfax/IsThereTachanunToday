@@ -28,6 +28,13 @@ def no_tachanun(date):
         if date.day >= day["startDay"] and date.day <= day["endDay"]:
             return day
     
+    if date.day == 30 or date.day == 1:
+        return {
+            "description": "Rosh Chodesh %s" % get_rc_str(date),
+            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
+            "dayBefore": True
+        }
+    
     return False
 
 def fix_spelling(date_str):
@@ -38,6 +45,9 @@ def get_key(date):
 
 def month_str(date):
     return fix_spelling(hebrewcal.Month(date.year, date.month).name)
+
+def get_rc_str(date):
+    return month_str(date + 1)
 
 def get_hebrew_date_str(date):
     return "%s %s, %s" % (gematria.NumberToGematria(date.day, sofit=False), month_map[get_key(date)], gematria.YearNoToGematria(date.year, sofit=False))
