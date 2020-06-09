@@ -4,7 +4,7 @@
 <div style="padding-top: 10px; max-width: 50%; min-width: 400px; margin: auto">
     <div class="card">
         <div class="card-body">
-            <p>Today's Gregorian Date: {{date}}</p>
+            <p>Today's Gregorian Date: {{date}} {%if no_tachanun %}<span style="float: right"><a href="{{source}}" target="_blank">מהיכא תיתי</a></span>{% endif %}</p>
             <p>Today's Hebrew Date: {{hebrew_date}} / {{hebrew_date_hebrew}}</p>
             {%if no_tachanun %}
             <p>No tachnun today because {{hebrew_date}} is {{reason}}.</p>

@@ -21,4 +21,5 @@ def main():
         hebrew_date="%d %s %d" % (today_hebrew.day, month_str(today_hebrew), today_hebrew.year),
         hebrew_date_hebrew=get_hebrew_date_str(today_hebrew),
         date_placeholder=today_greg.isoformat(),
-        reason=tachanun_huh["description"] if tachanun_huh else "")
+        reason=tachanun_huh["description"] if tachanun_huh else "",
+        source="http://www.sefaria.org/%s" % tachanun_huh["source"] if tachanun_huh else "")
