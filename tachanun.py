@@ -18,6 +18,9 @@ month_map = {
     "adar_i": "אדר א׳",
     "adar_ii": "אדר ב׳"
 }
+
+month_list = ["Nisan", "Iyyar", "Sivan", "Tamuz", "Av", "Elul", "Tisrei", "Cheshvan", "Kislev", "Tevet", "Shvat", "Adar", "Adar Bet"]
+
 data = json.load(open("tachanun_days.json"))
 
 def no_tachanun(date, recurse=True):

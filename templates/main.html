@@ -2,7 +2,13 @@
 {% block body %}
 <h1 style="padding-top: 40px; text-align: center">{%if no_tachanun %}No Tachanun today!{% else %}There is Tachanun today.{% endif %}</h1>
 {% if subtitle %}<h3 style="text-align: center">{{subtitle}}</h3>{% endif %}
+
 <div style="padding-top: 10px; max-width: 50%; min-width: 400px; margin: auto">
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+    {% endif %}
     <div class="card">
         <div class="card-body">
             <p>Today's Gregorian Date: {{date}} {%if source %}<span style="float: right"><a href="{{source}}" target="_blank">מהיכא תיתי</a></span>{% endif %}</p>
@@ -31,23 +37,10 @@
                             <input type="number" class="form-control" name="h_day" min="1" max="30" value="{{h_day}}" required>
                         </div>
                         <div class="col-auto form-group">
-                            <select class="form-control" name="h_month">
-                                <option value=7>Tishrei</option>
-                                <option value=8>Cheshvan</option>
-                                <option value=9>Kislev</option>
-                                <option value=10>Tevet</option>
-                                <option value=11>Shvat</option>
-                                <option value=12>Adar</option>
-                                <option value=1>Nisan</option>
-                                <option value=2>Iyyar</option>
-                                <option value=3>Sivan</option>
-                                <option value=4>Tamuz</option>
-                                <option value=5>Av</option>
-                                <option value=6>Elul</option>
-                            </select>
+                            <select id="h_month" class="form-control" name="h_month"></select>
                         </div>
                         <div class="col-auto form-group">
-                            <input type="number" class="form-control" name="h_year" max="6000" min="5000" value="{{h_year}}" required>
+                            <input id="h_year" type="number" class="form-control" name="h_year" max="6000" min="5000" value="{{h_year}}" required>
                         </div>
                         <div class="col-auto form-group">
                             <button type="submit" class="btn btn-primary">Go!</button>
@@ -63,8 +56,29 @@
 
 {% block script %}
 <script>
+    function populateMonths(year, val) {
+        $.get(`/get_months/${year}`, (months) => {
+            max = months.length
+
+            if (val > max)
+                val = max
+
+            i = 7
+            $("#h_month").empty()
+            for (month of months) {
+                $("#h_month").append(`<option value=${i}>${month}</option>`)
+                i = (i % max) + 1
+            }
+            $(`option[value=${val}]`).prop("selected", true)    
+        })
+    }
+
     $(function() {
-        $("option[value={{h_month}}]").prop("selected", true)
+        populateMonths($("#h_year").val(), parseInt("{{h_month}}"))
+
+        $("#h_year").change(function (e) {
+            populateMonths(e.target.value, $("#h_month").val())
+        })
     })
 </script>
 {% endblock %}
