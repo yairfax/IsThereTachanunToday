@@ -20,7 +20,7 @@ month_map = {
 }
 data = json.load(open("tachanun_days.json"))
 
-def no_tachanun(date):
+def no_tachanun(date, recurse=True):
     month = month_key(date)
     days = data[month]
 
@@ -42,6 +42,16 @@ def no_tachanun(date):
             "dayBefore": True
         }
     
+    if recurse:
+        tomorrow = no_tachanun(date + 1, recurse=False)
+        if tomorrow and tomorrow["dayBefore"]:
+            return {
+                "mincha": True,
+                "subtitle": "...but there's no Tachanun at Mincha!",
+                "description": tomorrow["description"],
+                "source": "Peninei_Halakhah%2C_Prayer.21.7.3"
+            }
+
     return False
 
 def fix_spelling(date_str):
@@ -56,5 +66,5 @@ def month_str(date):
 def month_str_rc(date):
     return month_str(date + 1)
 
-def get_hebrew_date_str(date):
+def hebrew_date_str(date):
     return "%s %s, %s" % (gematria.NumberToGematria(date.day, sofit=False), month_map[month_key(date)], gematria.YearNoToGematria(date.year, sofit=False))

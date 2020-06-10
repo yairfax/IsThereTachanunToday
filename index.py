@@ -16,10 +16,12 @@ def main():
 
     tachanun_huh = no_tachanun(today_hebrew)
     return render_template('main.html',
-        no_tachanun=tachanun_huh,
+        no_tachanun="mincha" not in tachanun_huh if tachanun_huh else False,
         date=today_greg.strftime("%B %d, %Y"),
         hebrew_date="%d %s %d" % (today_hebrew.day, month_str(today_hebrew), today_hebrew.year),
-        hebrew_date_hebrew=get_hebrew_date_str(today_hebrew),
+        hebrew_date_hebrew=hebrew_date_str(today_hebrew),
         date_placeholder=today_greg.isoformat(),
         reason=tachanun_huh["description"] if tachanun_huh else "",
-        source="http://www.sefaria.org/%s" % tachanun_huh["source"] if tachanun_huh else "")
+        source="http://www.sefaria.org/%s" % tachanun_huh["source"] if tachanun_huh else "",
+        subtitle=tachanun_huh["subtitle"] if tachanun_huh and "subtitle" in tachanun_huh else "",
+        mincha="mincha" in tachanun_huh if tachanun_huh else False)
