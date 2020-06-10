@@ -21,7 +21,7 @@ month_map = {
 data = json.load(open("tachanun_days.json"))
 
 def no_tachanun(date):
-    month = get_key(date)
+    month = month_key(date)
     days = data[month]
 
     for day in days:
@@ -30,7 +30,7 @@ def no_tachanun(date):
     
     if date.day == 30 or date.day == 1:
         return {
-            "description": "Rosh Chodesh %s" % get_rc_str(date),
+            "description": "Rosh Chodesh %s" % month_str_rc(date),
             "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
             "dayBefore": True
         }
@@ -40,14 +40,14 @@ def no_tachanun(date):
 def fix_spelling(date_str):
     return date_str.replace("Teves", "Tevet").replace("Iyar", "Iyyar").replace("Nissan", "Nisan").replace("Rishon", "Aleph").replace("Sheni", "Bet")
 
-def get_key(date):    
+def month_key(date):    
     return month_str(date).lower().replace(" aleph", "_i").replace(" bet", "_ii")
 
 def month_str(date):
     return fix_spelling(hebrewcal.Month(date.year, date.month).name)
 
-def get_rc_str(date):
+def month_str_rc(date):
     return month_str(date + 1)
 
 def get_hebrew_date_str(date):
-    return "%s %s, %s" % (gematria.NumberToGematria(date.day, sofit=False), month_map[get_key(date)], gematria.YearNoToGematria(date.year, sofit=False))
+    return "%s %s, %s" % (gematria.NumberToGematria(date.day, sofit=False), month_map[month_key(date)], gematria.YearNoToGematria(date.year, sofit=False))
