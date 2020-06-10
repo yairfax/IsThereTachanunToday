@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block body %}
 <h1 style="padding-top: 40px; text-align: center">{%if no_tachanun %}No Tachanun today!{% else %}There is Tachanun today.{% endif %}</h1>
-<h3 style="text-align: center">{{subtitle}}</h3>
+{% if subtitle %}<h3 style="text-align: center">{{subtitle}}</h3>{% endif %}
 <div style="padding-top: 10px; max-width: 50%; min-width: 400px; margin: auto">
     <div class="card">
         <div class="card-body">
