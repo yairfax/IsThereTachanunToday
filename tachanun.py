@@ -34,6 +34,13 @@ def no_tachanun(date):
             "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
             "dayBefore": True
         }
+
+    if date.weekday() == 7:
+        return {
+            "description": "Shabbat Kodesh",
+            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
+            "dayBefore": True
+        }
     
     return False
 

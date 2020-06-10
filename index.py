@@ -12,7 +12,7 @@ def main():
 
     if 'g_date' in request.args:
         today_greg = date.fromisoformat(request.args.get('g_date'))
-        today_hebrew = today_hebrew.from_pydate(today_greg)
+        today_hebrew = dates.HebrewDate.from_pydate(today_greg)
 
     tachanun_huh = no_tachanun(today_hebrew)
     return render_template('main.html',
