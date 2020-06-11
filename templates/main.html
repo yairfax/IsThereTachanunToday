@@ -33,10 +33,10 @@
             <div class="container">
                 <form method="GET" action="/">
                     <div class="form-row align-items-center">
-                        <div class="col-auto form-group">
-                            <input type="number" class="form-control" name="h_day" min="1" max="30" value="{{h_day}}" required>
+                        <div class="col-md-2 form-group">
+                            <input type="number" class="form-control" id="h_day" name="h_day" min="1" value="{{h_day}}" required>
                         </div>
-                        <div class="col-auto form-group">
+                        <div class="col-md-3 form-group">
                             <select id="h_month" class="form-control" name="h_month"></select>
                         </div>
                         <div class="col-auto form-group">
@@ -73,12 +73,21 @@
         })
     }
 
-    $(function() {
-        populateMonths($("#h_year").val(), parseInt("{{h_month}}"))
-
-        $("#h_year").change(function (e) {
-            populateMonths(e.target.value, $("#h_month").val())
+    function maxDays(year, month) {
+        $.get(`/get_days/${year}-${month}`, (days) => {
+            $("#h_day").prop("max", days)
+            if ($("#h_day").val() > days)
+                $("#h_day").val(days)
         })
+    }
+
+    $(function() {
+        month = parseInt("{{h_month}}")
+        populateMonths($("#h_year").val(), month)
+        maxDays($("#h_year").val(), month)
+
+        $("#h_year").change((e) => populateMonths($("#h_year").val(), $("#h_month").val()))
+        $("#h_month").change((e) => maxDays($("#h_year").val(), $("#h_month").val()))
     })
 </script>
 {% endblock %}

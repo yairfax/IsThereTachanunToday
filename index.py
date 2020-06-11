@@ -45,3 +45,7 @@ def main():
 @app.route("/get_months/<int:year>")
 def get_months(year):
     return jsonify([fix_spelling(month.name) for month in hebrewcal.Year(year).itermonths()])
+
+@app.route("/get_days/<int:year>-<int:month>")
+def get_days(month, year):
+    return jsonify(len([i for i in hebrewcal.Month(year, month).iterdates()]))
