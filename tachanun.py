@@ -45,17 +45,24 @@ def no_tachanun(date, recurse=True):
             "dayBefore": True
         }
 
-    if date.month == 10 and date.day == 3 and hebrewcal.holiday(date) == 'Chanuka':
+    if date.month == 10 and date.day == 3 and hebrewcal.holiday(date) == 'Chanuka': # chanuka if kislev if 29/30 days
         return {
             "description": "Chanukah",
             "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
             "dayBefore": False
         }
 
-    if date.month == 2 and date.day in [3, 4, 5, 6] and is_yom_haatzmaut(date):
+    if date.month == 2 and date.day in [3, 4, 5, 6] and is_yom_haatzmaut(date): # yom haatzmaut day of the week
         return {
             "description": "Yom Haatzmaut",
             "source": "Peninei_Halakhah%2C_Prayer.21.7.4",
+            "dayBefore": True
+        }
+
+    if date.month == 5 and date.day in [9, 10] and hebrewcal.holiday(date) == "9 of Av": # nidcheh tisha b'av
+        return {
+            "description": "Tisha B'Av",
+            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
             "dayBefore": True
         }
     
