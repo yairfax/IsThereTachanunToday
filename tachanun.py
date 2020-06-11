@@ -51,6 +51,13 @@ def no_tachanun(date, recurse=True):
             "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
             "dayBefore": False
         }
+
+    if date.month == 2 and date.day in [3, 4, 5, 6] and is_yom_haatzmaut(date):
+        return {
+            "description": "Yom Haatzmaut",
+            "source": "Peninei_Halakhah%2C_Prayer.21.7.4",
+            "dayBefore": True
+        }
     
     if recurse:
         tomorrow = no_tachanun(date + 1, recurse=False)
@@ -63,6 +70,25 @@ def no_tachanun(date, recurse=True):
             }
 
     return False
+
+def yom_haatzmaut(year):
+    hey_iyyar = dates.HebrewDate(year, 2, 5)
+    d_of_week = hey_iyyar.weekday()
+
+    if d_of_week == 4:
+        return hey_iyyar
+
+    elif d_of_week == 6:
+        return dates.HebrewDate(year, 2, 4)
+
+    elif d_of_week == 7:
+        return dates.HebrewDate(year, 2, 3)
+
+    elif d_of_week == 2:
+        return dates.HebrewDate(year, 2, 6)
+
+def is_yom_haatzmaut(date):
+    return date == yom_haatzmaut(date.year)
 
 def fix_spelling(date_str):
     return date_str.replace("Teves", "Tevet").replace("Iyar", "Iyyar").replace("Nissan", "Nisan").replace("Rishon", "Aleph").replace("Sheni", "Bet")

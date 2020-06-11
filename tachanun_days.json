@@ -187,14 +187,6 @@
     "iyyar": [
         {
             "month": "iyyar",
-            "startDay": 5,
-            "endDay": 5,
-            "description": "Yom Ha'atzmaut",
-            "source": "Peninei_Halakhah%2C_Prayer.21.7.4",
-            "dayBefore": true
-        },
-        {
-            "month": "iyyar",
             "startDay": 14,
             "endDay": 14,
             "description": "Pesach Sheni",
