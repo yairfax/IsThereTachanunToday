@@ -86,7 +86,10 @@
         populateMonths($("#h_year").val(), month)
         maxDays($("#h_year").val(), month)
 
-        $("#h_year").change((e) => populateMonths($("#h_year").val(), $("#h_month").val()))
+        $("#h_year").change((e) => {
+            populateMonths($("#h_year").val(), $("#h_month").val())
+            maxDays($("#h_year").val(), $("#h_month").val())
+        })
         $("#h_month").change((e) => maxDays($("#h_year").val(), $("#h_month").val()))
     })
 </script>

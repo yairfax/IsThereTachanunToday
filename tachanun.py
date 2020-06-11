@@ -44,6 +44,13 @@ def no_tachanun(date, recurse=True):
             "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
             "dayBefore": True
         }
+
+    if date.month == 10 and date.day == 3 and hebrewcal.holiday(date) == 'Chanuka':
+        return {
+            "description": "Chanukah",
+            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
+            "dayBefore": False
+        }
     
     if recurse:
         tomorrow = no_tachanun(date + 1, recurse=False)

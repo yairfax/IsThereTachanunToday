@@ -79,7 +79,7 @@
             "month": "kislev",
             "startDay": 25,
             "endDay": 30,
-            "description": "Channuka",
+            "description": "Chanukah",
             "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
             "dayBefore": true
         }
@@ -88,8 +88,8 @@
         {
             "month": "tevet",
             "startDay": 1,
-            "endDay": 3,
-            "description": "Channuka",
+            "endDay": 2,
+            "description": "Chanukah",
             "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
             "dayBefore": false
         }
