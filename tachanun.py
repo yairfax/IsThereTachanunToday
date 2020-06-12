@@ -23,7 +23,7 @@ month_list = ["Nisan", "Iyyar", "Sivan", "Tamuz", "Av", "Elul", "Tisrei", "Chesh
 
 data = json.load(open("tachanun_days.json"))
 
-def no_tachanun(date, recurse=True):
+def no_tachanun(date, recurse=True, il=False):
     month = month_key(date)
     days = data[month]
 
@@ -66,6 +66,14 @@ def no_tachanun(date, recurse=True):
             "dayBefore": True
         }
     
+    if il and is_purim_meshulash(date):
+        return {
+            "description": "Purim Meshulash",
+            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
+            "dayBefore": False,
+            "subtitle": "...only in Yerushalaim!"
+        }
+
     if recurse:
         tomorrow = no_tachanun(date + 1, recurse=False)
         if tomorrow and tomorrow["dayBefore"]:
@@ -96,6 +104,11 @@ def yom_haatzmaut(year):
 
 def is_yom_haatzmaut(date):
     return date == yom_haatzmaut(date.year)
+
+def is_purim_meshulash(date):
+    month = 13 if hebrewcal.Year(date.year).leap else 12
+
+    return date.month == month and date.day == 16 and date.weekday() == 1
 
 def fix_spelling(date_str):
     return date_str.replace("Teves", "Tevet").replace("Iyar", "Iyyar").replace("Nissan", "Nisan").replace("Rishon", "Aleph").replace("Sheni", "Bet")
