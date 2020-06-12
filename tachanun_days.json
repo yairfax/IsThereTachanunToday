@@ -35,7 +35,16 @@
         {
             "month": "tishrei",
             "startDay": 15,
+            "endDay": 15,
+            "description": "Sukkot",
+            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
+            "dayBefore": false
+        },
+        {
+            "month": "tishrei",
+            "startDay": 16,
             "endDay": 16,
+            "description_il": "Sukkot (Chol Hamoed)",
             "description": "Sukkot",
             "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
             "dayBefore": false
@@ -53,6 +62,7 @@
             "startDay": 22,
             "endDay": 22,
             "description": "Shmini Atzeret",
+            "description_il": "Simchat Torah",
             "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
             "dayBefore": false
         },
@@ -61,6 +71,7 @@
             "startDay": 23,
             "endDay": 23,
             "description": "Simchat Torah",
+            "description_il": "between Sukkot and Rosh Chodesh Cheshvan",
             "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
             "dayBefore": false
         },
@@ -170,8 +181,17 @@
         {
             "month": "nisan",
             "startDay": 15,
+            "endDay": 21,
+            "description": "Pesach",
+            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
+            "dayBefore": true
+        },
+        {
+            "month": "nisan",
+            "startDay": 22,
             "endDay": 22,
             "description": "Pesach",
+            "description_il": "Chodesh Nisan",
             "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
             "dayBefore": true
         },
@@ -230,8 +250,17 @@
         {
             "month": "sivan",
             "startDay": 6,
+            "endDay": 6,
+            "description": "Shavuot",
+            "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
+            "dayBefore": false
+        },
+        {
+            "month": "sivan",
+            "startDay": 7,
             "endDay": 7,
             "description": "Shavuot",
+            "description_il": "the week after Shavuot",
             "source": "Peninei_Halakhah%2C_Prayer.21.7.2",
             "dayBefore": false
         },
