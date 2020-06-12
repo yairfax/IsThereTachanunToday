@@ -11,8 +11,13 @@ def main(il=False):
     today_greg = today_hebrew.to_pydate()
 
     if 'g_date' in request.args:
-        today_greg = date.fromisoformat(request.args.get('g_date'))
-        today_hebrew = dates.HebrewDate.from_pydate(today_greg)
+        try:
+            today_greg = date.fromisoformat(request.args.get('g_date'))
+            today_hebrew = dates.HebrewDate.from_pydate(today_greg)
+        except ValueError:
+            error = request.args.get('g_date') + " malformed date."
+            today_greg = date.today()
+            today_hebrew = dates.HebrewDate.today()
 
     error = ""
     if 'h_day' in request.args:
@@ -20,10 +25,11 @@ def main(il=False):
         
         try:
             today_hebrew = dates.HebrewDate(year, month, day)
+            today_greg = today_hebrew.to_pydate()
         except ValueError:
-            error = "%d %s %d" % (day, month_list[month - 1], year) + " doesn't exist"
+            error = "%d %d, %d" % (day, month, year) + " malformed date."
             today_hebrew = dates.HebrewDate.today()
-        today_greg = today_hebrew.to_pydate()
+            today_greg = date.today()
 
     tachanun_huh = no_tachanun(today_hebrew, il=il)
 
