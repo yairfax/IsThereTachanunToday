@@ -46,7 +46,25 @@
     </div>
 
     <p style="position: absolute; bottom: 0%; left: 2%; color:gray">Created by <a href="https://www.github.com/yairfax" target="_blank">Yair Fax</a></p>
+    <p style="position: absolute; bottom: 0%; right: 2%"><a href="#" data-toggle="modal" data-target="#disclaimer-modal">Disclaimer</a></p>
 </body>
+<div class="modal fade" id="disclaimer-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Disclaimer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    This website should in no way be final <i>psak</i> for anyone's <i>davening</i>.
+                    It is merely meant as a convenience; one should consult a <i>posek</i> or <i>sefer halacha</i> before making a halachic decision.</p>
+            </div>
+        </div>
+    </div>
+</div>
 {% block script %}{% endblock %}
 
 </html>
