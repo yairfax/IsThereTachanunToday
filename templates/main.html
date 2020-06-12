@@ -1,12 +1,7 @@
 {% extends "base.html" %}
 {% block body %}
-{%if il %}
-<div style="text-align: right"><b>Israel</b> | <a href="/?g_date={{date_placeholder}}">Chutz La'aretz</a></div>
-{% else %}
-<div style="text-align: right"><a href="/il?g_date={{date_placeholder}}">Israel</a> | <b>Chutz La'aretz</b></div>
-{% endif %}
 
-<h1 style="padding-top: 40px; text-align: center">{%if no_tachanun %}No Tachanun today!{% else %}There is Tachanun today.{% endif %}</h1>
+<h1 style="text-align: center">{%if no_tachanun %}No Tachanun today!{% else %}There is Tachanun today.{% endif %}</h1>
 {% if subtitle %}<h3 style="text-align: center">{{subtitle}}</h3>{% endif %}
 
 <div style="padding-top: 10px; max-width: 50%; min-width: 400px; margin: auto">

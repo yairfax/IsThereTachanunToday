@@ -41,6 +41,16 @@
         </div>
     </div>-->
 
+    <div style="margin: 20px">
+        <a href="/{{il}}">IsThereTachanunToday.com</a>
+        {%if il %}
+        <span style="float: right"><b>Israel</b> | <a href="/?g_date={{date_placeholder}}">Chutz La'aretz</a></span>
+        {% else %}
+        <span style="float: right"><a href="/il?g_date={{date_placeholder}}">Israel</a> | <b>Chutz La'aretz</b></span>
+        {% endif %}
+    </div>
+
+
     <div style="padding-top: 2%" class="container">
         {% block body %}{% endblock %}
     </div>
