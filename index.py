@@ -65,7 +65,7 @@ def api(il=False):
 
     is_tachanun = no_tachanun(today_hebrew, il=il)
     
-    return jsonify({
+    result = {
         "gregorian_date": str(today_greg),
         "hebrew_date": str(today_hebrew),
         "gregorian_date_friendly": today_greg.strftime("%B %d, %Y"),
@@ -73,9 +73,17 @@ def api(il=False):
         "hebrew_date_hebrew": hebrew_date_hebrew(today_hebrew),
         "tachanun_today": "mincha" in is_tachanun if is_tachanun else True,
         "tachanun_at_mincha": bool(not is_tachanun),
-        "reason": (is_tachanun["description_il"] if il and "description_il" in is_tachanun else is_tachanun["description"]) if is_tachanun else None,
-        "source": f"https://www.sefaria.org/{is_tachanun['source']}" if is_tachanun else None
-    })
+    }
+
+    if is_tachanun:
+        result["reason"] = is_tachanun["description_il"] if il and "description_il" in is_tachanun else is_tachanun["description"]
+        result["source"] = f"https://www.sefaria.org/{is_tachanun['source']}"
+
+        # I hate hardcoding specific cases, but Purim Meshulash is really quite a specific case
+        if "subtitle" in is_tachanun and "yerushalaim" in is_tachanun["subtitle"].lower():
+            result["extra_info"] = "only in Yerushalaim"
+
+    return jsonify(result)
 
 @app.route("/api/il")
 def api_il():
