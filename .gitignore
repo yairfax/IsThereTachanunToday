@@ -139,3 +139,5 @@ cython_debug/
 
 .vscode
 Makefile
+.envrc
+.python-version

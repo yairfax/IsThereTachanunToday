@@ -32,7 +32,7 @@
                 </form>
             </div>
             <div class="container">
-                <form method="GET" action="/{{il}}">
+                <form id="hebrew_form">
                     <div class="form-row align-items-center">
                         <div class="col-md-2 form-group">
                             <input type="number" class="form-control" id="h_day" name="h_day" min="1" value="{{h_day}}" required>
@@ -92,6 +92,20 @@
             maxDays($("#h_year").val(), $("#h_month").val())
         })
         $("#h_month").change((e) => maxDays($("#h_year").val(), $("#h_month").val()))
+
+        $("#hebrew_form").submit(e => {
+            e.preventDefault()
+            form = $("<form>")
+            form.prop("method", "GET")
+            form.prop("action", "/{{il}}")
+            form.prop("hidden", true)
+            hebrew_date = $("<input>")
+            hebrew_date.prop("name", "h_date")
+            hebrew_date.val(`${$("#h_year").val()}-${$("#h_month").val()}-${$("#h_day").val()}`)
+            form.append(hebrew_date)
+            $(document.body).append(form)
+            form.submit()
+        })
     })
 </script>
 {% endblock %}

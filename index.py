@@ -1,51 +1,43 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, make_response
 from datetime import date
 from tachanun import *
+from dates import *
 import requests
 from pyluach import dates, hebrewcal
+from dataclasses import dataclass
+from http import HTTPStatus
+
 app = Flask(__name__)
+app.config["JSON_AS_ASCII"] = False
 
 @app.route('/')
 def main(il=False):
-    today_hebrew = dates.HebrewDate.today()
-    today_greg = today_hebrew.to_pydate()
-
-    if 'g_date' in request.args:
-        try:
-            today_greg = date.fromisoformat(request.args.get('g_date'))
-            today_hebrew = dates.HebrewDate.from_pydate(today_greg)
-        except ValueError:
-            error = request.args.get('g_date') + " malformed date."
-            today_greg = date.today()
-            today_hebrew = dates.HebrewDate.today()
-
     error = ""
-    if 'h_day' in request.args:
-        year, month, day = int(request.args.get('h_year')), int(request.args.get('h_month')), int(request.args.get('h_day'))
-        
-        try:
-            today_hebrew = dates.HebrewDate(year, month, day)
-            today_greg = today_hebrew.to_pydate()
-        except ValueError:
-            error = "%d %d, %d" % (day, month, year) + " malformed date."
-            today_hebrew = dates.HebrewDate.today()
-            today_greg = date.today()
+    g_date = request.args.get("g_date")
+    h_date = request.args.get("h_date")
 
-    tachanun_huh = no_tachanun(today_hebrew, il=il)
+    try:
+        today_hebrew, today_greg = get_dates(h_date, g_date)
+    except ValueError as e:
+        today_hebrew = dates.HebrewDate.today()
+        today_greg = today_hebrew.to_pydate()
+        error = str(e)
+
+    is_tachanun = no_tachanun(today_hebrew, il=il)
 
     return render_template('main.html',
-        no_tachanun="mincha" not in tachanun_huh if tachanun_huh else False,
+        no_tachanun="mincha" not in is_tachanun if is_tachanun else False,
         date=today_greg.strftime("%a %B %d, %Y"),
         h_day=today_hebrew.day,
         h_month=today_hebrew.month,
         h_year=today_hebrew.year,
-        hebrew_date="%d %s %d" % (today_hebrew.day, month_str(today_hebrew), today_hebrew.year),
-        hebrew_date_hebrew=hebrew_date_str(today_hebrew),
+        hebrew_date=hebrew_date_english(today_hebrew),
+        hebrew_date_hebrew=hebrew_date_hebrew(today_hebrew),
         date_placeholder=today_greg.isoformat(),
-        reason=tachanun_huh["description_il"] if (il and tachanun_huh and "description_il" in tachanun_huh) else (tachanun_huh["description"] if tachanun_huh else ""),
-        source="http://www.sefaria.org/%s" % tachanun_huh["source"] if tachanun_huh else "",
-        subtitle=tachanun_huh["subtitle"] if tachanun_huh and "subtitle" in tachanun_huh else "",
-        mincha="mincha" in tachanun_huh if tachanun_huh else False,
+        reason=is_tachanun["description_il"] if (il and is_tachanun and "description_il" in is_tachanun) else (is_tachanun["description"] if is_tachanun else ""),
+        source="http://www.sefaria.org/%s" % is_tachanun["source"] if is_tachanun else "",
+        subtitle=is_tachanun["subtitle"] if is_tachanun and "subtitle" in is_tachanun else "",
+        mincha="mincha" in is_tachanun if is_tachanun else False,
         error=error,
         il="il" if il else "")
 
@@ -60,3 +52,39 @@ def get_months(year):
 @app.route("/get_days/<int:year>-<int:month>")
 def get_days(month, year):
     return jsonify(len([i for i in hebrewcal.Month(year, month).iterdates()]))
+
+@app.route("/api")
+def api(il=False):
+    g_date = request.args.get("gregorian_date")
+    h_date = request.args.get("hebrew_date")
+
+    try:
+        today_hebrew, today_greg = get_dates(h_date, g_date)
+    except ValueError as e:
+        return make_response(jsonify({"error": str(e)}), HTTPStatus.BAD_REQUEST)
+
+    is_tachanun = no_tachanun(today_hebrew, il=il)
+    
+    result = {
+        "gregorian_date": str(today_greg),
+        "hebrew_date": str(today_hebrew),
+        "gregorian_date_friendly": today_greg.strftime("%B %d, %Y"),
+        "hebrew_date_friendly": hebrew_date_english(today_hebrew),
+        "hebrew_date_hebrew": hebrew_date_hebrew(today_hebrew),
+        "tachanun_today": "mincha" in is_tachanun if is_tachanun else True,
+        "tachanun_at_mincha": bool(not is_tachanun),
+    }
+
+    if is_tachanun:
+        result["reason"] = is_tachanun["description_il"] if il and "description_il" in is_tachanun else is_tachanun["description"]
+        result["source"] = f"https://www.sefaria.org/{is_tachanun['source']}"
+
+        # I hate hardcoding specific cases, but Purim Meshulash is really quite a specific case
+        if "subtitle" in is_tachanun and "yerushalaim" in is_tachanun["subtitle"].lower():
+            result["extra_info"] = "only in Yerushalaim"
+
+    return jsonify(result)
+
+@app.route("/api/il")
+def api_il():
+    return api(il=True)

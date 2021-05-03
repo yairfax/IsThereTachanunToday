@@ -1,25 +1,15 @@
 import json
 from pyluach import dates, hebrewcal
-from njdate import gematria
+from dataclasses import dataclass
+from dates import *
 
-month_map = {
-    "tishrei": "תשרי",
-    "cheshvan": "חשוון",
-    "kislev": "כסלו",
-    "tevet": "טבת",
-    "shvat": "שבט",
-    "adar": "אדר",
-    "nisan": "ניסן",
-    "iyyar": "אייר",
-    "sivan": "סיון",
-    "tamuz": "טמוז",
-    "av": "אב",
-    "elul": "אלול",
-    "adar_i": "אדר א׳",
-    "adar_ii": "אדר ב׳"
-}
-
-month_list = ["Nisan", "Iyyar", "Sivan", "Tamuz", "Av", "Elul", "Tisrei", "Cheshvan", "Kislev", "Tevet", "Shvat", "Adar", "Adar Bet"]
+@dataclass
+class TachanunDay:
+    tachanun_today: bool
+    tachanun_at_mincha: bool
+    description: str
+    source: str
+    subtitle: str
 
 data = json.load(open("tachanun_days.json"))
 
@@ -109,18 +99,3 @@ def is_purim_meshulash(date):
     month = 13 if hebrewcal.Year(date.year).leap else 12
 
     return date.month == month and date.day == 16 and date.weekday() == 1
-
-def fix_spelling(date_str):
-    return date_str.replace("Teves", "Tevet").replace("Iyar", "Iyyar").replace("Nissan", "Nisan").replace("Rishon", "Aleph").replace("Sheni", "Bet")
-
-def month_key(date):    
-    return month_str(date).lower().replace(" aleph", "_i").replace(" bet", "_ii")
-
-def month_str(date):
-    return fix_spelling(hebrewcal.Month(date.year, date.month).name)
-
-def month_str_rc(date):
-    return month_str(date + 1)
-
-def hebrew_date_str(date):
-    return "%s %s, %s" % (gematria.NumberToGematria(date.day, sofit=False), month_map[month_key(date)], gematria.YearNoToGematria(date.year, sofit=False))
