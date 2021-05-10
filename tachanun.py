@@ -13,7 +13,7 @@ class TachanunDay:
 
 data = json.load(open("tachanun_days.json"))
 
-def no_tachanun(date, recurse=True, il=False):
+def no_tachanun(date, recurse=True, mode=""):
     month = month_key(date)
     days = data[month]
 
@@ -56,7 +56,7 @@ def no_tachanun(date, recurse=True, il=False):
             "dayBefore": True
         }
     
-    if il and is_purim_meshulash(date):
+    if mode == "il" and is_purim_meshulash(date):
         return {
             "description": "Purim Meshulash",
             "source": "Peninei_Halakhah%2C_Prayer.21.7.3",

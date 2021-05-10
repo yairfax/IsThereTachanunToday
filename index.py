@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
 
 @app.route('/')
-def main(il=False):
+def main(mode=""):
     error = ""
     g_date = request.args.get("g_date")
     h_date = request.args.get("h_date")
@@ -34,12 +34,12 @@ def main(il=False):
         hebrew_date=hebrew_date_english(today_hebrew),
         hebrew_date_hebrew=hebrew_date_hebrew(today_hebrew),
         date_placeholder=today_greg.isoformat(),
-        reason=is_tachanun["description_il"] if (il and is_tachanun and "description_il" in is_tachanun) else (is_tachanun["description"] if is_tachanun else ""),
+        reason=is_tachanun["description_il"] if (mode == "il" and is_tachanun and "description_il" in is_tachanun) else (is_tachanun["description"] if is_tachanun else ""),
         source="http://www.sefaria.org/%s" % is_tachanun["source"] if is_tachanun else "",
         subtitle=is_tachanun["subtitle"] if is_tachanun and "subtitle" in is_tachanun else "",
         mincha="mincha" in is_tachanun if is_tachanun else False,
         error=error,
-        il="il" if il else "")
+        mode=mode)
 
 @app.route("/il")
 def il():
