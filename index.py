@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify, make_response
 from datetime import date
 from tachanun import *
 from dates import *
+from yahrtzeits import *
 import requests
 from pyluach import dates, hebrewcal
 from dataclasses import dataclass
@@ -23,7 +24,7 @@ def main(mode=""):
         today_greg = today_hebrew.to_pydate()
         error = str(e)
 
-    is_tachanun = no_tachanun(today_hebrew, il=il)
+    is_tachanun = no_tachanun(today_hebrew, mode=mode)
 
     return render_template('main.html',
         no_tachanun="mincha" not in is_tachanun if is_tachanun else False,
@@ -43,7 +44,36 @@ def main(mode=""):
 
 @app.route("/il")
 def il():
-    return main(il=True)
+    return main(mode="il")
+
+@app.route("/pro")
+def pro():
+    error = ""
+    g_date = request.args.get("g_date")
+    h_date = request.args.get("h_date")
+
+    try:
+        today_hebrew, today_greg = get_dates(h_date, g_date)
+    except ValueError as e:
+        today_hebrew = dates.HebrewDate.today()
+        today_greg = today_hebrew.to_pydate()
+        error = str(e)
+
+    is_tachanun = get_yahrtzeit(today_hebrew)
+
+    return render_template('main.html',
+        no_tachanun = True,
+        date=today_greg.strftime("%a %B %d, %Y"),
+        h_day=today_hebrew.day,
+        h_month=today_hebrew.month,
+        h_year=today_hebrew.year,
+        hebrew_date=hebrew_date_english(today_hebrew),
+        hebrew_date_hebrew=hebrew_date_hebrew(today_hebrew),
+        date_placeholder=today_greg.isoformat(),
+        reason=is_tachanun["description"],
+        source=is_tachanun["source"],
+        mode="pro"
+    )
 
 @app.route("/get_months/<int:year>")
 def get_months(year):
@@ -54,7 +84,7 @@ def get_days(month, year):
     return jsonify(len([i for i in hebrewcal.Month(year, month).iterdates()]))
 
 @app.route("/api")
-def api(il=False):
+def api(mode=""):
     g_date = request.args.get("gregorian_date")
     h_date = request.args.get("hebrew_date")
 
@@ -63,7 +93,7 @@ def api(il=False):
     except ValueError as e:
         return make_response(jsonify({"error": str(e)}), HTTPStatus.BAD_REQUEST)
 
-    is_tachanun = no_tachanun(today_hebrew, il=il)
+    is_tachanun = no_tachanun(today_hebrew, mode=mode)
     
     result = {
         "gregorian_date": str(today_greg),
@@ -76,7 +106,7 @@ def api(il=False):
     }
 
     if is_tachanun:
-        result["reason"] = is_tachanun["description_il"] if il and "description_il" in is_tachanun else is_tachanun["description"]
+        result["reason"] = is_tachanun["description_il"] if mode == "il" and "description_il" in is_tachanun else is_tachanun["description"]
         result["source"] = f"https://www.sefaria.org/{is_tachanun['source']}"
 
         # I hate hardcoding specific cases, but Purim Meshulash is really quite a specific case
@@ -87,4 +117,4 @@ def api(il=False):
 
 @app.route("/api/il")
 def api_il():
-    return api(il=True)
+    return api(mode="il")

@@ -1,15 +1,6 @@
 import json
 from pyluach import dates, hebrewcal
-from dataclasses import dataclass
 from dates import *
-
-@dataclass
-class TachanunDay:
-    tachanun_today: bool
-    tachanun_at_mincha: bool
-    description: str
-    source: str
-    subtitle: str
 
 data = json.load(open("tachanun_days.json"))
 

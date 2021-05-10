@@ -20,7 +20,7 @@
 
             <p>Pick another date:</p>
             <div class="container">
-                <form method="GET" action="/{{il}}">
+                <form method="GET" action="/{{mode}}">
                     <div class="form-row align-items-center">
                         <div class="form-group col-auto">
                             <input type="date" class="form-control" name="g_date" value="{{date_placeholder}}" required>
@@ -97,7 +97,7 @@
             e.preventDefault()
             form = $("<form>")
             form.prop("method", "GET")
-            form.prop("action", "/{{il}}")
+            form.prop("action", "/{{mode}}")
             form.prop("hidden", true)
             hebrew_date = $("<input>")
             hebrew_date.prop("name", "h_date")

@@ -28,6 +28,10 @@
             color: white;
         }
     </style>
+
+    {% if mode == "pro" %}
+    <meta name="robots" content="noindex">
+    {% endif %}
 </head>
 
 <body>
@@ -42,9 +46,11 @@
     </div>-->
 
     <div style="margin: 20px">
-        <a href="/{{il}}">IsThereTachanunToday.com</a>
-        {%if il %}
+        <a href="/{{mode}}">IsThereTachanunToday.com</a>
+        {%if mode == "il"%}
         <span style="float: right"><b>Israel</b> | <a href="/?g_date={{date_placeholder}}">Chutz La'aretz</a></span>
+        {% elif mode == "pro" %}
+        <span style="float: right"><b>Premium</b> | <a href="/il?g_date={{date_placeholder}}">Israel</a> | <a href="/?g_date={{date_placeholder}}">Chutz La'aretz</a></span>
         {% else %}
         <span style="float: right"><a href="/il?g_date={{date_placeholder}}">Israel</a> | <b>Chutz La'aretz</b></span>
         {% endif %}
