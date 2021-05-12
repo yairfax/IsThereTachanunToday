@@ -118,3 +118,28 @@ def api(mode=""):
 @app.route("/api/il")
 def api_il():
     return api(mode="il")
+
+@app.route("/api/pro")
+def api_pro():
+    g_date = request.args.get("gregorian_date")
+    h_date = request.args.get("hebrew_date")
+
+    try:
+        today_hebrew, today_greg = get_dates(h_date, g_date)
+    except ValueError as e:
+        return make_response(jsonify({"error": str(e)}), HTTPStatus.BAD_REQUEST)
+
+    is_tachanun = get_yahrtzeit(today_hebrew)
+
+    result = {
+        "gregorian_date": str(today_greg),
+        "hebrew_date": str(today_hebrew),
+        "gregorian_date_friendly": today_greg.strftime("%B %d, %Y"),
+        "hebrew_date_friendly": hebrew_date_english(today_hebrew),
+        "hebrew_date_hebrew": hebrew_date_hebrew(today_hebrew),
+        "tachanun_today": False,
+        "reason": is_tachanun["description"],
+        "source": is_tachanun["source"]
+    }
+
+    return jsonify(result)
