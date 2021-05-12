@@ -141,3 +141,5 @@ cython_debug/
 Makefile
 .envrc
 .python-version
+
+TachanunTest/

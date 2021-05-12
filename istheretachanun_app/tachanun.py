@@ -1,8 +1,9 @@
 import json
 from pyluach import dates, hebrewcal
-from dates import *
+from .dates import *
+from pkg_resources import resource_filename
 
-data = json.load(open("tachanun_days.json"))
+data = json.load(open(resource_filename('istheretachanun_app', "resources/tachanun_days.json")))
 
 def no_tachanun(date, recurse=True, mode=""):
     month = month_key(date)

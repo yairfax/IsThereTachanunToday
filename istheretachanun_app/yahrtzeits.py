@@ -1,8 +1,9 @@
 # %%
 import json
 import random
+from pkg_resources import resource_filename
 
-data = json.load(open("yahrtzeits.json"))
+data = json.load(open(resource_filename('istheretachanun_app', "resources/yahrtzeits.json")))
 
 # %%
 def get_yahrtzeit(h_date):

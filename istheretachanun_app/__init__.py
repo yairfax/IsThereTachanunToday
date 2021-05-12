@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, jsonify, make_response
 from datetime import date
-from tachanun import *
-from dates import *
-from yahrtzeits import *
+from .tachanun import *
+from .dates import *
+from .yahrtzeits import *
 import requests
 from pyluach import dates, hebrewcal
 from dataclasses import dataclass
