@@ -46,13 +46,13 @@ def parse_h_date(h_date):
     return dates.HebrewDate(year, month, day)
 
 def fix_spelling(date_str):
-    return date_str.replace("Teves", "Tevet").replace("Iyar", "Iyyar").replace("Nissan", "Nisan").replace("Rishon", "Aleph").replace("Sheni", "Bet")
+    return date_str.replace("Teves", "Tevet").replace("Iyar", "Iyyar").replace("Nissan", "Nisan").replace("1", "Aleph").replace("2", "Bet")
 
 def month_key(date):    
     return month_str(date).lower().replace(" aleph", "_i").replace(" bet", "_ii")
 
 def month_str(date):
-    return fix_spelling(hebrewcal.Month(date.year, date.month).name)
+    return fix_spelling(hebrewcal.Month(date.year, date.month).month_name())
 
 def month_str_rc(date):
     return month_str(date + 1)
