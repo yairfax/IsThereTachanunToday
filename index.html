@@ -33,82 +33,9 @@
 </head>
 
 <body>
-    <!--<div class="navbar">
-        <div class="container-fluid">
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/"><b>IsThereTachanunToday.com</b></a>
-                </li>
-            </ul>
-        </div>
-    </div>-->
-
-    <!-- <div style="margin: 20px">
-        <a href="/{{mode}}">IsThereTachanunToday.com</a>
-        {%if mode == "il"%}
-        <span style="float: right"><b>Israel</b> | <a href="/?g_date={{date_placeholder}}">Chutz La'aretz</a></span>
-        {% elif mode == "pro" %}
-        <span style="float: right"><b>Premium</b> | <a href="/il?g_date={{date_placeholder}}">Israel</a> | <a href="/?g_date={{date_placeholder}}">Chutz La'aretz</a></span>
-        {% else %}
-        <span style="float: right"><a href="/il?g_date={{date_placeholder}}">Israel</a> | <b>Chutz La'aretz</b></span>
-        {% endif %}
-    </div> -->
-
-
     <div style="padding-top: 2%" class="container">
-
         <h1 style="text-align: center">Website currently under maintenance.</h1>
         <h3 style="text-align: center">We'll be back soon!</h3>
-
-        <!-- <div style="padding-top: 10px; max-width: 50%; min-width: 400px; margin: auto">
-            {% if error %}
-            <div class="alert alert-danger" role="alert">
-                {{error}}
-            </div>
-            {% endif %}
-            <div class="card">
-                <div class="card-body">
-                    <p>Today's Gregorian Date: {{date}} {%if source %}<span style="float: right"><a href="{{source}}" target="_blank">מהיכא תיתי</a></span>{% endif %}</p>
-                    <p>Today's Hebrew Date: {{hebrew_date}} / {{hebrew_date_hebrew}}</p>
-                    {%if no_tachanun or mincha %}
-                    <p>No tachnun {% if mincha %}at mincha because tomorrow{% else %}today because {{hebrew_date}}{% endif %} is {{reason}}.</p>
-                    {% endif %}
-
-                    <p>Pick another date:</p>
-                    <div class="container">
-                        <form method="GET" action="/{{mode}}">
-                            <div class="form-row align-items-center">
-                                <div class="form-group col-auto">
-                                    <input type="date" class="form-control" name="g_date" value="{{date_placeholder}}" required>
-                                </div>
-                                <div class="form-group col-auto">
-                                    <button type="submit" class="btn btn-primary">Go!</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="container">
-                        <form id="hebrew_form">
-                            <div class="form-row align-items-center">
-                                <div class="col-md-2 form-group">
-                                    <input type="number" class="form-control" id="h_day" name="h_day" min="1" value="{{h_day}}" required>
-                                </div>
-                                <div class="col-md-3 form-group">
-                                    <select id="h_month" class="form-control" name="h_month"></select>
-                                </div>
-                                <div class="col-auto form-group">
-                                    <input id="h_year" type="number" class="form-control" name="h_year" max="6000" min="5000" value="{{h_year}}" required>
-                                </div>
-                                <div class="col-auto form-group">
-                                    <button type="submit" class="btn btn-primary">Go!</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div> -->
     </div>
 
     <p style="position: absolute; bottom: 0%; left: 2%; color:gray">Created by <a href="https://www.github.com/yairfax" target="_blank">Yair Fax</a></p>
