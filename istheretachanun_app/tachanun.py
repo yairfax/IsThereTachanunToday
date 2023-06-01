@@ -55,6 +55,13 @@ def no_tachanun(date, recurse=True, mode=""):
             "dayBefore": False,
             "subtitle": "...only in Yerushalaim!"
         }
+    
+    if mode == "" and date.month == 3 and date.day == 13:
+        return {
+            "description": "the week after Shavuot",
+            "source": "Peninei_Halakhah%2C_Prayer.21.7.3",
+            "dayBefore": False
+        }
 
     if recurse:
         tomorrow = no_tachanun(date + 1, recurse=False)
